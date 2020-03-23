@@ -1,0 +1,113 @@
+Enter password: *********
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 8
+Server version: 8.0.11 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2018, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| library            |
+| mysql              |
+| performance_schema |
+| sakila             |
+| sys                |
+| world              |
++--------------------+
+7 rows in set (0.15 sec)
+
+mysql> create database CookBook;
+Query OK, 1 row affected (0.10 sec)
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| cookbook           |
+| information_schema |
+| library            |
+| mysql              |
+| performance_schema |
+| sakila             |
+| sys                |
+| world              |
++--------------------+
+8 rows in set (0.00 sec)
+
+mysql> use CookBook;
+Database changed
+mysql> create table cookbook(ID int not null primary key,name varchar(255) not null, kind varchar(255) not null, time int not null, url varchar(255) not null, text varchar(255) not null);
+Query OK, 0 rows affected (0.17 sec)
+
+mysql> show database; select*from books;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'database' at line 1
+ERROR 1146 (42S02): Table 'cookbook.books' doesn't exist
+mysql> show database; select*from cookbooks;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'database' at line 1
+ERROR 1146 (42S02): Table 'cookbook.cookbooks' doesn't exist
+mysql> show database; select*from cookbook;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'database' at line 1
+Empty set (0.03 sec)
+
+mysql> drop table cookbook;
+Query OK, 0 rows affected (0.13 sec)
+
+mysql> create table cookbook(ID int not null primary key,name varchar(255) not null, kind varchar(255) not null, time int not null, url varchar(255) not null, text varchar(700) not null);
+Query OK, 0 rows affected (0.15 sec)
+
+mysql> insert into cookbook(name,kind,time,url,text) values (Jajecznica,danie,15,lfjdll,kldjgldfjg);
+ERROR 1054 (42S22): Unknown column 'Jajecznica' in 'field list'
+mysql> insert into cookbook(name,kind,time,url,text) values (jajecznica,danie,15,lfjdll,kldjgldfjg);
+ERROR 1054 (42S22): Unknown column 'jajecznica' in 'field list'
+mysql> insert into cookbook(name,kind,time,url,text) values (jajecznica,danie,15,lfjdll,kldjgldfjg);
+ERROR 1054 (42S22): Unknown column 'jajecznica' in 'field list'
+mysql> drop table cookbook;
+Query OK, 0 rows affected (0.08 sec)
+
+mysql> create table cookbook(ID int not null primary key auto_increment,name varchar(255) not null, kind varchar(255) not null, time int not null, url varchar(255) not null, text varchar(700) not null);
+Query OK, 0 rows affected (0.13 sec)
+
+mysql> insert into cookbook(name,kind,time,url,text) values (jajecznica,danie,15,lfjdll,kldjgldfjg);
+ERROR 1054 (42S22): Unknown column 'jajecznica' in 'field list'
+mysql> show database; select*from cookbook;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'database' at line 1
+Empty set (0.00 sec)
+
+mysql>
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| cookbook           |
+| information_schema |
+| library            |
+| mysql              |
+| performance_schema |
+| sakila             |
+| sys                |
+| world              |
++--------------------+
+8 rows in set (0.00 sec)
+
+mysql> insert into cookbook(name,kind,time,url,text) values ("jajecznica","danie",15,"lfjdll","kldjgldfjg");
+Query OK, 1 row affected (0.09 sec)
+
+mysql> show database; select*from cookbook;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'database' at line 1
++----+------------+-------+------+--------+------------+
+| ID | name       | kind  | time | url    | text       |
++----+------------+-------+------+--------+------------+
+|  1 | jajecznica | danie |   15 | lfjdll | kldjgldfjg |
++----+------------+-------+------+--------+------------+
+1 row in set (0.00 sec)
+
+mysql>
